@@ -1,4 +1,4 @@
-from src.mars_rover import MarsRover, EAST, SOUTH
+from src.mars_rover import MarsRover, EAST, SOUTH, WEST
 
 
 def test_dummy():
@@ -23,3 +23,10 @@ def test_move_backwards_south():
     rover.direction = SOUTH
     rover.move_backwards()
     assert rover.location == [0, 1]
+
+
+def test_move_backwards_west():
+    rover = MarsRover()
+    rover.direction = WEST
+    rover.move_backwards()
+    assert rover.location == [1, 0]

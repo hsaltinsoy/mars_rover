@@ -19,3 +19,5 @@ class MarsRover:
             self.location[0] -= 1
         elif self.direction == SOUTH:
             self.location[1] += 1
+        elif self.direction == WEST:
+            self.location[0] += 1
