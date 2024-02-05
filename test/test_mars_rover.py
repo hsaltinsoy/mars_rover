@@ -1,32 +1,22 @@
-from src.mars_rover import MarsRover, EAST, SOUTH, WEST
+import pytest
+
+from src.mars_rover import MarsRover, EAST, SOUTH, WEST, NORTH
 
 
 def test_dummy():
     assert True == True
 
 
-def test_move_backwards_north():
-    rover = MarsRover()
+@pytest.mark.parametrize(
+    "location, direction, expected",
+    [
+        ([0, 0], NORTH, [0, -1]),
+        ([0, 0], EAST, [-1, 0]),
+        ([0, 0], SOUTH, [0, 1]),
+        ([0, 0], WEST, [1, 0]),
+    ],
+)
+def test_move_backwards_north(location: list[int], direction: str, expected: list[int]):
+    rover = MarsRover(location=location, direction=direction)
     rover.move_backwards()
-    assert rover.location == [0, -1]
-
-
-def test_move_backwards_east():
-    rover = MarsRover()
-    rover.direction = EAST
-    rover.move_backwards()
-    assert rover.location == [-1, 0]
-
-
-def test_move_backwards_south():
-    rover = MarsRover()
-    rover.direction = SOUTH
-    rover.move_backwards()
-    assert rover.location == [0, 1]
-
-
-def test_move_backwards_west():
-    rover = MarsRover()
-    rover.direction = WEST
-    rover.move_backwards()
-    assert rover.location == [1, 0]
+    assert rover.location == expected

@@ -5,9 +5,9 @@ WEST = "W"
 
 
 class MarsRover:
-    def __init__(self) -> None:
-        self.location = [0, 0]
-        self.direction = NORTH
+    def __init__(self, location: list[int], direction: str) -> None:
+        self.location = location
+        self.direction = direction
 
     def move_forward_east(self) -> None:
         self.location[0] += 1
